@@ -77,7 +77,7 @@ header {
   background-image: url(./save.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 2rem;
 }
 
 .saveBtn i:hover {
