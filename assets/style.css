@@ -58,6 +58,11 @@ header {
   color: white;
 }
 
+#currentDay {
+  font-style: italic;
+  color: rgb(212, 88, 12);
+}
+
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
