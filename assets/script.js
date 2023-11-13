@@ -6,9 +6,12 @@ currentDayElement.text(todaysDate);
 var rowContainer = $('.container');
 
 // for testing...
-// var currentHour = 10;
 
-var currentHour = dayjs().format('HH');
+
+var currentHour = 
+dayjs().format('HH');
+// for testing
+// 08;
 // console.log(currentHour);
 
 var hourForRow = 09;
@@ -32,7 +35,7 @@ function buildRow() {
     apptBox.addClass('description');
     plannerRow.append(apptBox);
 
-    if (hourBox.text() < currentHour) {
+    if (hourBox.text() < currentHour || currentHour > 17) {
         apptBox.addClass('past');
     } else if (hourBox.text() > currentHour) {
         apptBox.addClass('future')
@@ -50,5 +53,3 @@ function buildRow() {
 for (let i = 0; i < 9; i++) {
     buildRow();
 };
-
-
