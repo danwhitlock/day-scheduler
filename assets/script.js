@@ -4,10 +4,14 @@ var todaysDate = dayjs().format('dddd DD MMMM YYYY');
 currentDayElement.text(todaysDate);
 
 var rowContainer = $('.container');
+
+// for testing...
+// var currentHour = 10;
+
 var currentHour = dayjs().format('HH');
 // console.log(currentHour);
 
-var hourForRow = 9;
+var hourForRow = 09;
 
 // dynamically create a schedule row
 function buildRow() {
@@ -22,30 +26,29 @@ function buildRow() {
     plannerRow.append(hourBox);
     hourBox.text(hourForRow);
     hourForRow++;
-    
+
     // create and append the appointment box
     var apptBox = $('<div>');
-    apptBox.addClass('time-block');
+    apptBox.addClass('description');
     plannerRow.append(apptBox);
+
+    if (hourBox.text() < currentHour) {
+        apptBox.addClass('past');
+    } else if (hourBox.text() > currentHour) {
+        apptBox.addClass('future')
+    } else if (hourBox.text() == currentHour) {
+        apptBox.addClass('present');
+    }
 
     // create and append the save button
     var saveButton = $('<div>');
     saveButton.addClass('saveBtn');
-    plannerRow.append(saveButton);
+    plannerRow.append(saveButton);    
 };
 
 // loop to create 9 rows
 for (let i = 0; i < 9; i++) {
     buildRow();
 };
-
-// update box colours based upon time of day - doesn't work because hour box isn't in local scope
-if (hourBox === currentHour) {
-    hourBox.addClass('present');
-} else if (hourBox < currentHour) {
-    hourBox.addClass('past');
-} else if (hourBox > currentHour) {
-    hourBox.addClass('future');
-}
 
 
