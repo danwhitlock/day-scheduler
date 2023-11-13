@@ -28,6 +28,7 @@ header {
 }
 .description {
   white-space: pre-wrap;
+  border: none;
 }
 
 .time-block {

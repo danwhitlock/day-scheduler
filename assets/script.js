@@ -9,9 +9,9 @@ var rowContainer = $('.container');
 
 
 var currentHour = 
-dayjs().format('HH');
+// dayjs().format('HH');
 // for testing
-// 08;
+11;
 // console.log(currentHour);
 
 var hourForRow = 09;
@@ -31,10 +31,12 @@ function buildRow() {
     hourForRow++;
 
     // create and append the appointment box
-    var apptBox = $('<div>');
+    var apptBox = $('<input>');
+    apptBox.attr('type', 'text');
     apptBox.addClass('description');
     plannerRow.append(apptBox);
 
+    // style the apptBox based upon what the current hour of the day is
     if (hourBox.text() < currentHour || currentHour > 17) {
         apptBox.addClass('past');
     } else if (hourBox.text() > currentHour) {
