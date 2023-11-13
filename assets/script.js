@@ -11,10 +11,10 @@ var rowContainer = $('.container');
 var currentHour = 
 // dayjs().format('HH');
 // for testing
-11;
+10;
 // console.log(currentHour);
 
-var hourForRow = 09;
+var hourForRow = 9;
 
 // dynamically create a schedule row
 function buildRow() {
