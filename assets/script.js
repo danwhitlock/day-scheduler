@@ -5,19 +5,17 @@ currentDayElement.text(todaysDate);
 
 var rowContainer = $('.container');
 
-// for testing...
-
 
 var currentHour = 
 // dayjs().format('HH');
 // for testing
-10;
-// console.log(currentHour);
+11;
 
 var hourForRow = 9;
 
 // dynamically create a schedule row
 function buildRow() {
+
     // create and append the row
     var plannerRow = $('<div>');
     plannerRow.addClass('row');
@@ -40,7 +38,7 @@ function buildRow() {
     if (hourBox.text() < currentHour || currentHour > 17) {
         apptBox.addClass('past');
     } else if (hourBox.text() > currentHour) {
-        apptBox.addClass('future')
+        apptBox.addClass('future');
     } else if (hourBox.text() == currentHour) {
         apptBox.addClass('present');
     }
@@ -48,7 +46,10 @@ function buildRow() {
     // create and append the save button
     var saveButton = $('<div>');
     saveButton.addClass('saveBtn');
-    plannerRow.append(saveButton);    
+    plannerRow.append(saveButton);
+    
+    // event listeners for save button, to add apptBox content to local storage?
+        
 };
 
 // loop to create 9 rows
