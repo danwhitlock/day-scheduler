@@ -13,6 +13,9 @@ var currentHour =
 
 var hourForRow = 9;
 
+// object to hold saved appointments
+var savedAppts = {};
+
 // dynamically create a schedule row
 function buildRow() {
 
@@ -49,7 +52,13 @@ function buildRow() {
     plannerRow.append(saveButton);
     
     // event listeners for save button, to add apptBox content to local storage?
-        
+    saveButton.on('click', function() {
+        var apptInfo = apptBox.val();
+        var hourRow = hourBox.text();
+        console.log(apptBox.val());
+        console.log(hourBox.text());
+        JSON.stringify(localStorage.setItem(hourRow, apptInfo));
+    })
 };
 
 // loop to create 9 rows
