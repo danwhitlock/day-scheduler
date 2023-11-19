@@ -6,13 +6,11 @@ currentDayElement.text(todaysDate);
 var rowContainer = $('.container');
 
 
-var currentHour = 
-dayjs().format('HH');
+var currentHour = parseInt(dayjs().format('HH'));
+// console.log(currentHour);
 
+// start point for assigning hours to rows
 var hourForRow = 9;
-
-// // object to hold saved appointments
-// var savedAppts = {};
 
 // dynamically create a schedule row
 function buildRow() {
@@ -42,11 +40,11 @@ function buildRow() {
     }
 
     // style the apptBox based upon what the current hour of the day is
-    if (hourBox.text() < currentHour || currentHour > 17) {
+    if (parseInt(hourBox.text()) < currentHour || currentHour > 17) {
         apptBox.addClass('past');
-    } else if (hourBox.text() > currentHour) {
+    } else if (parseInt(hourBox.text()) > currentHour) {
         apptBox.addClass('future');
-    } else if (hourBox.text() == currentHour) {
+    } else if (parseInt(hourBox.text()) == currentHour) {
         apptBox.addClass('present');
     }
 
