@@ -7,14 +7,12 @@ var rowContainer = $('.container');
 
 
 var currentHour = 
-// dayjs().format('HH');
-// for testing
-11;
+dayjs().format('HH');
 
 var hourForRow = 9;
 
-// object to hold saved appointments
-var savedAppts = {};
+// // object to hold saved appointments
+// var savedAppts = {};
 
 // dynamically create a schedule row
 function buildRow() {
@@ -37,6 +35,12 @@ function buildRow() {
     apptBox.addClass('description');
     plannerRow.append(apptBox);
 
+    // check for an appt in LS and update
+    var savedAppt = localStorage.getItem(hourBox.text()); // check if there's a savedAppt matching that hour
+    if (savedAppt) {
+        apptBox.val(savedAppt); // if so, update the appointment info with the corresponding value
+    }
+
     // style the apptBox based upon what the current hour of the day is
     if (hourBox.text() < currentHour || currentHour > 17) {
         apptBox.addClass('past');
@@ -55,8 +59,8 @@ function buildRow() {
     saveButton.on('click', function() {
         var apptInfo = apptBox.val();
         var hourRow = hourBox.text();
-        console.log(apptBox.val());
-        console.log(hourBox.text());
+        // console.log(apptBox.val());
+        // console.log(hourBox.text());
         JSON.stringify(localStorage.setItem(hourRow, apptInfo));
     })
 };
